@@ -5,7 +5,7 @@ A Laravel 4 package for adding simple pages to a website with banner image, head
 
 ## Features
 
-* Pages can be draft or published
+* Pages can be draft or approved
 * They have a published date that you can set in the future for delayed/scheduled publishing
 * Page slugs can be automatically created from the page heading
 * Control page title, meta description and keywords for SEO purposes
@@ -50,7 +50,7 @@ The view that should be rendered for the pages. You can use the bundled view, or
 
 ## Administrator
 
-You can use the excellent Laravel Administrator package by frozennode to administer your blog.
+You can use the excellent Laravel Administrator package by frozennode to administer your pages.
 
 http://administrator.frozennode.com/docs/installation
 

@@ -7,6 +7,8 @@ class Page extends \Eloquent {
 
 	protected $table = 'fbf_pages';
 
+	protected $softDelete = true;
+
 	public static $sluggable = array(
         'build_from' => 'heading',
         'save_to'    => 'slug',
