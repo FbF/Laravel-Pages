@@ -8,7 +8,7 @@ class Page extends \Eloquent {
 	protected $table = 'fbf_pages';
 
 	public static $sluggable = array(
-        'build_from' => 'title',
+        'build_from' => 'heading',
         'save_to'    => 'slug',
     );
 
@@ -32,7 +32,7 @@ class Page extends \Eloquent {
 			return true;
 		});
 
-		static::updated(function($member)
+		static::updated(function($page)
 		{
 			if ($page->oldMainImage <> $page->main_image)
 			{
@@ -43,15 +43,28 @@ class Page extends \Eloquent {
 	}
 
 	protected function updateMainImageSize()
-	{	return;
-		$pathToMainImage = public_path() . \Config::get('laravel-pages::main_image_dir') . DIRECTORY_SEPARATOR . $page->main_image;
+	{
+		$pathToMainImage = public_path() . \Config::get('laravel-pages::main_image_dir') . DIRECTORY_SEPARATOR . $this->main_image;
 		if (file_exists($pathToMainImage))
 		{
 			list($width, $height) = getimagesize($pathToMainImage);
-			$page->main_image_width = $width;
-			$page->main_image_height = $height;
-			$page->save();
+			$this->main_image_width = $width;
+			$this->main_image_height = $height;
+			$this->save();
 		}
+	}
+
+	/**
+	 * Returns the page object for the given slug
+	 * @param $slug
+	 * @return mixed
+	 */
+	public static function get($slug)
+	{
+		return self::where('slug','=',$slug)
+			->where('status','=',Page::APPROVED)
+			->where('published_date','<=',\Carbon\Carbon::today())
+			->first();
 	}
 
 }

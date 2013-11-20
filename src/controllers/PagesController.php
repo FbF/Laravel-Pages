@@ -4,10 +4,7 @@ class PagesController extends \BaseController {
 
 	public function view($slug)
 	{
-		$page = Page::where('slug','=',$slug)
-			->where('status','=',Page::APPROVED)
-			->where('published_date','<=',\Carbon\Carbon::today())
-			->first();
+		$page = Page::get($slug);
 		if (!$page)
 		{
 			\App::abort(404);
