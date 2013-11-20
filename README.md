@@ -38,6 +38,10 @@ Publish the config
 
     php artisan config:publish fbf/laravel-pages
 
+Run the migration
+
+    php artisan migrate --package="fbf/laravel-pages"
+
 ## Configuration
 
 The view that should be rendered for the pages. You can use the bundled view, or specify your own and use @include('laravel-pages::page') to get the whole page with content and banner image, or individually @include('laravel-pages::banner') and @include('laravel-pages::content')
