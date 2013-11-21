@@ -9,7 +9,7 @@
 		</div>
 	@elseif ( !empty( $page->main_image ) )
 		<div class="main-image">
-			<img src="/{{ Config::get('laravel-pages::main_image_dir') }}{{ $page->main_image }}"
+			<img src="{{ Config::get('laravel-pages::main_image_resized_dir') }}{{ $page->main_image }}"
 			alt="{{ $page->main_image_alt }}" width="{{ $page->main_image_width }}"
 			height="{{ $page->main_image_height }}" />
 		</div>

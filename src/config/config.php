@@ -18,16 +18,34 @@ return array(
 	'you_tube_embed_code' => '<iframe width="560" height="315" src="//www.youtube.com/embed/%YOU_TUBE_VIDEO_ID%?rel=0" frameborder="0" allowfullscreen></iframe>',
 
 	/**
-	 * The path, relative to the public_path() directory, where the main images are
-	 * stored.
+	 * The path, relative to the public_path() directory, where the original uploaded main images are stored.
 	 */
-	'main_image_dir' => 'uploads/packages/fbf/laravel-pages/main/resized',
+	'main_image_originals_dir' => '/uploads/packages/fbf/laravel-pages/main/originals/',
 
 	/**
-	 * The path, relative to the public_path() directory, where the banner images are
-	 * stored.
+	 * The path, relative to the public_path() directory, where the resized main images are stored.
 	 */
-	'banner_image_dir' => 'uploads/fbf_pages/banners/resized',
+	'main_image_resized_dir' => '/uploads/packages/fbf/laravel-pages/main/resized/',
+
+	/**
+	 * The max width of the main images. The resized version of main images will fit within this size
+	 */
+	'main_image_max_width' => 450,
+
+	/**
+	 * The max height of the main images. The resized version of main images will fit within this size
+	 */
+	'main_image_max_height' => 450,
+
+	/**
+	 * The path, relative to the public_path() directory, where the original uploaded banner images are stored.
+	 */
+	'banner_image_originals_dir' => '/uploads/packages/fbf/laravel-pages/banner/originals/',
+
+	/**
+	 * The path, relative to the public_path() directory, where the resized banner images are stored.
+	 */
+	'banner_image_resized_dir' => '/uploads/packages/fbf/laravel-pages/banner/resized/',
 
 	/**
 	 * The width of the banner images.

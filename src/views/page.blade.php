@@ -1,2 +1,2 @@
-@include ('laravel-pages::banner');
-@include ('laravel-pages::content');
+@include ('laravel-pages::banner')
+@include ('laravel-pages::content')

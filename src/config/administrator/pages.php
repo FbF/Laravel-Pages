@@ -40,6 +40,7 @@ return array(
 		),
 		'status' => array(
 			'title' => 'Status',
+			'select' => "CASE (:table).status WHEN '".Fbf\LaravelPages\Page::APPROVED."' THEN 'Approved' WHEN '".Fbf\LaravelPages\Page::DRAFT."' THEN 'Draft' END",
 		),
 		'updated_at' => array(
 			'title' => 'Last Updated',
@@ -60,10 +61,16 @@ return array(
 			'title' => 'Banner Image',
 			'type' => 'image',
 			'naming' => 'random',
-			'location' => public_path() . '/uploads/packages/fbf/laravel-pages/banner/originals/',
+			'location' => public_path() . Config::get('laravel-pages::banner_image_originals_dir'),
 			'size_limit' => 5,
 			'sizes' => array(
-				array(950, 300, 'crop', public_path() . '/uploads/packages/fbf/laravel-pages/banner/resized/', 100),
+				array(
+					Config::get('laravel-pages::banner_image_width'),
+					Config::get('laravel-pages::banner_image_height'),
+					'crop',
+					public_path() . Config::get('laravel-pages::banner_image_resized_dir'),
+					100
+				),
 			),
 		),
 		'banner_image_alt' => array(
@@ -74,10 +81,16 @@ return array(
 			'title' => 'Main Image',
 			'type' => 'image',
 			'naming' => 'random',
-			'location' => public_path() . '/uploads/packages/fbf/laravel-pages/main/originals/',
+			'location' => public_path() . Config::get('laravel-pages::main_image_originals_dir'),
 			'size_limit' => 5,
 			'sizes' => array(
-				array(450, 450, 'fit', public_path() . '/uploads/packages/fbf/laravel-pages/main/resized/', 100),
+				array(
+					Config::get('laravel-pages::main_image_max_width'),
+					Config::get('laravel-pages::main_image_max_height'),
+					'auto',
+					public_path() . Config::get('laravel-pages::main_image_resized_dir'),
+					100
+				),
 			),
 		),
 		'main_image_alt' => array(
@@ -85,7 +98,7 @@ return array(
 			'type' => 'text',
 		),
 		'you_tube_video_id' => array(
-			'title' => 'YouTube Video ID',
+			'title' => 'YouTube Video ID (Takes precedence over the main image if it\'s populated)',
 			'type' => 'text',
 		),
 		'content' => array(
@@ -193,3 +206,5 @@ return array(
 	},
 
 );
+
+

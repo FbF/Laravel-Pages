@@ -29,7 +29,7 @@ class CreatePagesTable extends Migration {
 			$table->text('meta_description');
 			$table->text('meta_keywords');
 			$table->enum('status', array('DRAFT', 'APPROVED'))->default('DRAFT');
-			$table->date('published_date');
+			$table->dateTime('published_date');
 			$table->timestamps();
 			$table->softDeletes();
 		});
