@@ -34,7 +34,7 @@ class Page extends \Eloquent {
 	 * recalculate the image width and height
 	 * @var string
 	 */
-	protected $oldMainImage = nuill;
+	protected $oldMainImage = null;
 
 	/**
 	 *
