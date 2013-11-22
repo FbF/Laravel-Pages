@@ -109,9 +109,9 @@ return array(
 			'title' => 'Slug',
 			'type' => 'text',
 			'visible' => function($model)
-			{
-				return $model->exists;
-			},
+				{
+					return $model->exists;
+				},
 		),
 		'page_title' => array(
 			'title' => 'Page Title',
@@ -135,9 +135,9 @@ return array(
 		),
 		'published_date' => array(
 			'title' => 'Published Date',
-		    'type' => 'datetime',
-		    'date_format' => 'yy-mm-dd', //optional, will default to this value
-		    'time_format' => 'HH:mm',    //optional, will default to this value
+			'type' => 'datetime',
+			'date_format' => 'yy-mm-dd', //optional, will default to this value
+			'time_format' => 'HH:mm',    //optional, will default to this value
 		),
 		'created_at' => array(
 			'title' => 'Created',
@@ -164,10 +164,6 @@ return array(
 			'type' => 'text',
 			'title' => 'Content',
 		),
-		'published_date' => array(
-			'title' => 'Published Date',
-			'type' => 'date',
-		),
 		'status' => array(
 			'type' => 'enum',
 			'title' => 'Status',
@@ -175,6 +171,10 @@ return array(
 				Fbf\LaravelPages\Page::DRAFT => 'Draft',
 				Fbf\LaravelPages\Page::APPROVED => 'Approved',
 			),
+		),
+		'published_date' => array(
+			'title' => 'Published Date',
+			'type' => 'date',
 		),
 	),
 
@@ -201,9 +201,9 @@ return array(
 	 * @type function
 	 */
 	'link' => function($model)
-	{
-		return URL::to($model->slug);
-	},
+		{
+			return URL::to($model->slug);
+		},
 
 );
 

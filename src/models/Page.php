@@ -26,6 +26,8 @@ class Page extends \Eloquent {
 	public static $sluggable = array(
         'build_from' => 'heading',
         'save_to'    => 'slug',
+        'separator' => '-',
+        'unique' => true,
     );
 
 	/**
@@ -46,7 +48,7 @@ class Page extends \Eloquent {
 		static::created(function($page)
 		{
 			// If the record is being created and there is a "main image" supplied, set it's width and height
-			if (!empty($page->main_image) && empty($page->main_image_width) && empty($page->main_image_height))
+			if (!empty($page->main_image))
 			{
 				$page->updateMainImageSize();
 			}
@@ -56,17 +58,14 @@ class Page extends \Eloquent {
 		{
 			// If the record is about to be updated and there is a "main image" supplied, get the current main image
 			// value so we can compare it to the new one
-			if (empty($page->main_image_width) && empty($page->main_image_height))
-			{
-				$page->oldMainImage = Page::where('id','=',$page->id)->first()->pluck('main_image');
-			}
+			$page->oldMainImage = self::where('id','=',$page->id)->first()->pluck('main_image');
 			return true;
 		});
 
 		static::updated(function($page)
 		{
 			// If the main image has changed, and the save was successful, update the database with the new width and height
-			if (isset($page->oldMainImage) && $page->oldMainImage <> $page->main_image && empty($page->main_image_width) && empty($page->main_image_height))
+			if (isset($page->oldMainImage) && $page->oldMainImage <> $page->main_image)
 			{
 				$page->updateMainImageSize();
 			}
