@@ -3,8 +3,8 @@
 	@if ( !empty( $page->you_tube_video_id ) )
 		<div class="page-youtube-video">
 			{{
-				str_replace(Config::get('laravel-pages::you_tube_embed_code'),
-							'%YOU_TUBE_VIDEO_ID%', $page->you_tube_video_id)
+				str_replace('%YOU_TUBE_VIDEO_ID%', $page->you_tube_video_id,
+					Config::get('laravel-pages::you_tube_embed_code'))
 			}}
 		</div>
 	@elseif ( !empty( $page->main_image ) )

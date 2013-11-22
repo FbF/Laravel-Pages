@@ -42,6 +42,13 @@ Run the migration
 
     php artisan migrate --package="fbf/laravel-pages"
 
+Create the relevant image upload directories that you specify in your config, e.g.
+
+    public/uploads/packages/fbf/laravel-pages/banner/originals
+    public/uploads/packages/fbf/laravel-pages/banner/resized
+    public/uploads/packages/fbf/laravel-pages/main/originals
+    public/uploads/packages/fbf/laravel-pages/main/resized
+
 ## Configuration
 
 The view that should be rendered for the pages. You can use the bundled view, or specify your own and use @include('laravel-pages::page') to get the whole page with content and banner image, or individually @include('laravel-pages::banner') and @include('laravel-pages::content')
