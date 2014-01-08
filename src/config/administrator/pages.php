@@ -186,6 +186,22 @@ return array(
 	'form_width' => 500,
 
 	/**
+	 * The validation rules for the form, based on the Laravel validation class
+	 *
+	 * @type array
+	 */
+	'rules' => array(
+		'heading' => 'required|max:255',
+		'banner_image' => 'max:255',
+		'banner_image_alt' => 'max:255',
+		'main_image' => 'max:255',
+		'main_image_alt' => 'max:255',
+		'you_tube_video_id' => 'max:255',
+		'status' => 'required|in:'.Fbf\LaravelPages\Page::DRAFT.','.Fbf\LaravelPages\Page::APPROVED,
+		'published_date' => 'required|date_format:"Y-m-d H:i:s"|date',
+	),
+
+	/**
 	 * The sort options for a model
 	 *
 	 * @type array
