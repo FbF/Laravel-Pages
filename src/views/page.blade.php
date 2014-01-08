@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	{{ $page->title }}
+	{{ $page->page_title }}
 @endsection
 
 @section('meta_description')
