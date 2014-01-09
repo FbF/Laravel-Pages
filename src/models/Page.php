@@ -112,4 +112,13 @@ class Page extends \Eloquent {
 			->first();
 	}
 
+	/**
+	 * Returns the URL of the current instance
+	 * @return mixed
+	 */
+	public function getUrl()
+	{
+		return \URL::action('Fbf\LaravelPages\PagesController@view', array('slug' => $this->slug));
+	}
+
 }

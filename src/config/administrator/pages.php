@@ -218,7 +218,7 @@ return array(
 	 */
 	'link' => function($model)
 		{
-			return URL::to($model->slug);
+			return $model->getUrl();
 		},
 
 );
