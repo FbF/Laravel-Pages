@@ -62,3 +62,83 @@ You can use the excellent Laravel Administrator package by frozennode to adminis
 http://administrator.frozennode.com/docs/installation
 
 A ready-to-use model config file for the Page model (pages.php) is provided in the src/config/administrator directory of the package, which you can copy into the app/config/administrator directory (or whatever you set as the model_config_path in the administrator config file).
+
+## Extending
+
+Let's say each page in your site can have a testimonial on it.
+
+* After installing the package you can create the testimonials table and model etc (or use the fbf/laravel-testimonials package)
+* Create the migration to add a testimonial_id field to the fbf_pages table, and run it
+
+```php
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class LinkPagesToTestimonials extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::table('fbf_pages', function(Blueprint $table)
+		{
+			$table->integer('testimonial_id')->nullable()->default(null);
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::table('fbf_pages', function(Blueprint $table)
+		{
+			$table->dropColumn('testimonial_id');
+		});
+	}
+
+}
+```
+
+* Create a model in you app/models directory that extends the package model and includes the relationship
+
+```php
+<?php
+
+class Page extends Fbf\LaravelPages\Page {
+
+	public function testimonial()
+	{
+		return $this->belongsTo('Fbf\LaravelTestimonials\Testimonial');
+	}
+
+}
+```
+
+* If you are using FrozenNode's Administrator package, update the pages config file to use your new model, and to allow selecting the testimonial to attach to the page:
+
+```php
+	/**
+	 * The class name of the Eloquent model that this config represents
+	 *
+	 * @type string
+	 */
+	'model' => 'Page',
+```
+...
+```php
+		'testimonial' => array(
+			'title' => 'Testimonial',
+			'type' => 'relationship',
+			'name_field' => 'title',
+		),
+```
+
+* Finally, update the IoC Container to inject an instance of your model into the controller, instead of the package's model

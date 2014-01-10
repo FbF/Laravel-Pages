@@ -2,9 +2,16 @@
 
 class PagesController extends \BaseController {
 
+	protected $page;
+
+	public function __construct(Page $page)
+	{
+		$this->page = $page;
+	}
+
 	public function view($slug)
 	{
-		$page = Page::get($slug);
+		$page = $this->page->get($slug);
 		if (!$page)
 		{
 			\App::abort(404);
