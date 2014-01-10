@@ -141,4 +141,10 @@ class Page extends Fbf\LaravelPages\Page {
 		),
 ```
 
-* Finally, update the IoC Container to inject an instance of your model into the controller, instead of the package's model
+* Finally, update the IoC Container to inject an instance of your model into the controller, instead of the package's model, e.g. in `app/start/global.php`
+
+```php
+App::bind('Fbf\LaravelPages\PagesController', function() {
+    return new Fbf\LaravelPages\PagesController(new Page);
+});
+```
