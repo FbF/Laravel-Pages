@@ -1,3 +1,3 @@
 <?php
 
-Route::get('{slug}', 'Fbf\LaravelPages\PagesController@view');
+Route::any('{slug}', 'Fbf\LaravelPages\PagesController@view')->where('slug', '([A-z\d-\/_.]+)?');
