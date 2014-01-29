@@ -24,7 +24,7 @@ class CreatePagesTable extends Migration {
 			$table->string('main_image_height');
 			$table->string('you_tube_video_id');
 			$table->text('content');
-			$table->string('slug')->unique();
+			$table->string('uri')->unique();
 			$table->text('page_title');
 			$table->text('meta_description');
 			$table->text('meta_keywords');

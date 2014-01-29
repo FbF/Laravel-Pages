@@ -25,7 +25,7 @@ class Page extends \Eloquent {
 	 */
 	public static $sluggable = array(
         'build_from' => 'heading',
-        'save_to'    => 'slug',
+        'save_to'    => 'uri',
         'separator' => '-',
         'unique' => true,
         'include_trashed' => true,
@@ -39,12 +39,23 @@ class Page extends \Eloquent {
 	 */
 	protected $oldMainImage = null;
 
-	/**
-	 *
-	 */
 	public static function boot()
 	{
 		parent::boot();
+
+		// Overriding the slug method to prefix with a forward slash
+		self::$sluggable['method'] = function($string, $sep) {
+			return '/' . \Str::slug($string, $sep);
+		};
+
+		static::creating(function($page)
+		{
+			// If the record is being created and there is a "main image" supplied, set it's width and height
+			if (!empty($page->main_image))
+			{
+				$page->updateMainImageSize();
+			}
+		});
 
 		static::created(function($page)
 		{
@@ -101,12 +112,12 @@ class Page extends \Eloquent {
 
 	/**
 	 * Returns the page object for the given slug
-	 * @param $slug
+	 * @param $uri
 	 * @return mixed
 	 */
-	public static function get($slug)
+	public static function get($uri)
 	{
-		return self::where('slug','=',$slug)
+		return self::where('uri','=',$uri)
 			->where('status','=',Page::APPROVED)
 			->where('published_date','<=',\Carbon\Carbon::now())
 			->first();
@@ -118,7 +129,7 @@ class Page extends \Eloquent {
 	 */
 	public function getUrl()
 	{
-		return \URL::action('Fbf\LaravelPages\PagesController@view', array('slug' => $this->slug));
+		return \URL::action('Fbf\LaravelPages\PagesController@view', array('uri' => $this->uri));
 	}
 
 }

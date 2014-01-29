@@ -32,8 +32,8 @@ return array(
 		'heading' => array(
 			'title' => 'Heading',
 		),
-		'slug' => array(
-			'title' => 'Slug',
+		'uri' => array(
+			'title' => 'URI',
 		),
 		'published_date' => array(
 			'title' => 'Published',
@@ -105,8 +105,8 @@ return array(
 			'title' => 'Content',
 			'type' => 'wysiwyg',
 		),
-		'slug' => array(
-			'title' => 'Slug',
+		'uri' => array(
+			'title' => 'URI',
 			'type' => 'text',
 			'visible' => function($model)
 				{

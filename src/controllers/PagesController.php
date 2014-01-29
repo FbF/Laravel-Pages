@@ -9,9 +9,13 @@ class PagesController extends \BaseController {
 		$this->page = $page;
 	}
 
-	public function view($slug)
+	public function view($uri)
 	{
-		$page = $this->page->get($slug);
+		if (substr($uri,0,1) != '/')
+		{
+			$uri = '/' . $uri;
+		}
+		$page = $this->page->get($uri);
 		if (!$page)
 		{
 			\App::abort(404);
