@@ -3,6 +3,11 @@
 return array(
 
 	/**
+	 * The pattern to find matching routes. By default it's anything except the root route, i.e. '/'
+	 */
+	'route' => '([A-z\d-\/_.]+)', // use '([A-z\d-\/_.]+)?' with the question mark on the end to match homepage too
+
+	/**
 	 * The view that should be rendered. You can change this to a view in your app
 	 * and in there you can @include the partials that the laravel-pages::view view
 	 * uses, i.e. laravel-pages::banner and laravel-pages::content.
