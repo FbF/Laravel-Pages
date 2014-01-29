@@ -1,6 +1,6 @@
 {
     "name": "fbf/laravel-pages",
-    "description": "A Laravel 4 package for adding simple pages to a website with banner image, heading, main image or YouTube video and body content.",
+    "description": "A Laravel 4 package for adding simple content managed pages to a website with banner image, heading, main image or YouTube video and body content.",
     "license": "MIT",
     "authors": [
         {
