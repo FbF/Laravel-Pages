@@ -1,24 +1,25 @@
 Laravel-Pages
 =============
 
-A Laravel 4 package for adding simple pages to a website with banner image, heading, main image or YouTube video and body content.
+A Laravel 4 package for adding simple content managed pages to a website with banner image, heading, main image or YouTube video and body content.
 
 ## Features
 
 * Pages can be draft or approved
 * They have a published date that you can set in the future for delayed/scheduled publishing
-* Page slugs can be automatically created from the page heading
+* Page uris are automatically generated from the page heading on create, but can be edited
+* Page uris can include '/' to denote sections of a website
 * Control page title, meta description and keywords for SEO purposes
 * Uses soft deletes in case you need to retrieve old content
 * Configure the rendered view so you can use one in your app rather than the one in the package
-* Make use of 2 partials in your own view so you can add extra stuff around
+* Make use of 2 partials in your own view so you can add extra stuff around the banner image and the content area
 
 ## Comes with a
 
 * Migration for creating the fbf_pages table
 * Model, controller and view (main view and 2 partials for content and banner image)
 * Built in route (currently catches anything from the root of the site, so include the ServiceProvider last in the list if other packages have routes that this would interfere with)
-* Service provider that automatically registers the sluggable
+* Service provider that automatically registers the eloquent sluggable package
 
 ## Installation
 
