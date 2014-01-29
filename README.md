@@ -9,6 +9,7 @@ A Laravel 4 package for adding simple content managed pages to a website with ba
 * They have a published date that you can set in the future for delayed/scheduled publishing
 * Page uris are automatically generated from the page heading on create, but can be edited
 * Page uris can include '/' to denote sections of a website
+* Configurable route matching pattern (by default it's everything except the root route, i.e. '/')
 * Control page title, meta description and keywords for SEO purposes
 * Uses soft deletes in case you need to retrieve old content
 * Configure the rendered view so you can use one in your app rather than the one in the package
