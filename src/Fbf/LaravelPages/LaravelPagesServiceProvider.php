@@ -19,16 +19,17 @@ class LaravelPagesServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('fbf/laravel-pages');
-    	include __DIR__.'/../../routes.php';
+		if (Config::get('laravel-pages::use_built_in_route', true))
+    			include __DIR__.'/../../routes.php';
 
-        \App::register('Cviebrock\EloquentSluggable\SluggableServiceProvider');
+	        \App::register('Cviebrock\EloquentSluggable\SluggableServiceProvider');
 
-        // Shortcut so developers don't need to add an Alias in app/config/app.php
-        $this->app->booting(function()
-        {
-                $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-                $loader->alias('Sluggable', 'Cviebrock\EloquentSluggable\Facades\Sluggable');
-        });
+	        // Shortcut so developers don't need to add an Alias in app/config/app.php
+	        $this->app->booting(function()
+	        {
+	                $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+	                $loader->alias('Sluggable', 'Cviebrock\EloquentSluggable\Facades\Sluggable');
+	        });
 	}
 
 	/**

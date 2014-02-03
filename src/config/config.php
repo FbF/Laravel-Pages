@@ -1,7 +1,10 @@
 <?php
 
 return array(
-
+    	/**
+     	* The parameter to use package built in routes.
+     	*/
+    	'use_built_in_route' => true,
 	/**
 	 * The pattern to find matching routes. By default it's anything except the root route, i.e. '/'
 	 */
