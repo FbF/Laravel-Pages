@@ -19,7 +19,7 @@ class LaravelPagesServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('fbf/laravel-pages');
-		if (Config::get('laravel-pages::use_built_in_route', true))
+		if (\Config::get('laravel-pages::use_built_in_route', true))
 		{
 			include __DIR__.'/../../routes.php';
 		}
