@@ -1,6 +1,7 @@
 <?php namespace Fbf\LaravelPages;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
 
 class LaravelPagesServiceProvider extends ServiceProvider {
 
