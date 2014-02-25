@@ -53,9 +53,15 @@ Create the relevant image upload directories that you specify in your config, e.
 
 ## Configuration
 
-The view that should be rendered for the pages. You can use the bundled view, or specify your own and use @include('laravel-pages::page') to get the whole page with content and banner image, or individually @include('laravel-pages::banner') and @include('laravel-pages::content')
+Check out the options in the `src/config/config.php` file
 
-	'view' => 'laravel-pages::page',
+### Routes configuration
+
+By default, the routes file from the package will be automatically included, which matches all routes except the homepage.
+
+However, the default route in the package will also override any of your `app/routes.php` routes.
+
+To avoid this, if you have app routes, you can configure it to not use the package's built-in routes file, and then just copy the routes from the package to your own `app/routes.php` file, but after your existing routes.
 
 ## Administrator
 
