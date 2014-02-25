@@ -19,10 +19,6 @@ class LaravelPagesServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('fbf/laravel-pages');
-		if (\Config::get('laravel-pages::use_built_in_route', true))
-		{
-			include __DIR__.'/../../routes.php';
-		}
 
         \App::register('Cviebrock\EloquentSluggable\SluggableServiceProvider');
 
@@ -41,7 +37,10 @@ class LaravelPagesServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		if (\Config::get('laravel-pages::use_built_in_route', true))
+		{
+			include __DIR__.'/../../routes.php';
+		}
 	}
 
 	/**
