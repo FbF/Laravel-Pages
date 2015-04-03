@@ -1,11 +1,15 @@
 <?php namespace Fbf\LaravelPages;
 
-class Page extends \Eloquent {
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
+class Page extends \NestedSet {
+
+	use SoftDeletingTrait;
 
 	/**
 	 * Status values for the database
 	 */
-	const DRAFT 	= 'DRAFT';
+	const LIVE 	= 'LIVE';
 	const APPROVED 	= 'APPROVED';
 
 	/**
@@ -118,7 +122,7 @@ class Page extends \Eloquent {
 	public static function get($uri)
 	{
 		return self::where('uri','=',$uri)
-			->where('status','=',Page::APPROVED)
+			->where('status','=',Page::LIVE)
 			->where('published_date','<=',\Carbon\Carbon::now())
 			->first();
 	}
