@@ -1,10 +1,6 @@
 <?php namespace Fbf\LaravelPages;
 
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
-
 class Page extends \NestedSet {
-
-	use SoftDeletingTrait;
 
 	/**
 	 * Status values for the database
@@ -22,18 +18,6 @@ class Page extends \NestedSet {
 	 * @var bool
 	 */
 	protected $softDelete = true;
-
-	/**
-	 * Used for Cviebrock/EloquentSluggable
-	 * @var array
-	 */
-	public static $sluggable = array(
-        'build_from' => 'heading',
-        'save_to'    => 'uri',
-        'separator' => '-',
-        'unique' => true,
-        'include_trashed' => true,
-    );
 
 	/**
 	 * Used to store the old main image value, set during model updating event before the model is actually updated
