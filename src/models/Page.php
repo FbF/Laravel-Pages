@@ -26,11 +26,6 @@ class Page extends \NestedSet {
 	{
 		parent::boot();
 
-		// Overriding the slug method to prefix with a forward slash
-		self::$sluggable['method'] = function($string, $sep) {
-			return '/' . \Str::slug($string, $sep);
-		};
-
 		static::creating(function($page)
 		{
 			// If the record is being created and there is a "main image" supplied, set it's width and height
