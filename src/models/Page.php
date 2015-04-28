@@ -15,11 +15,6 @@ class Page extends \NestedSet {
 	protected $table = 'fbf_pages';
 
 	/**
-	 * @var bool
-	 */
-	protected $softDelete = true;
-
-	/**
 	 * Used to store the old main image value, set during model updating event before the model is actually updated
 	 * Used to compare with the new main image value after saving the model, so we can work out whether we need to
 	 * recalculate the image width and height
